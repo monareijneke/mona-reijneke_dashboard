@@ -1,28 +1,37 @@
 import { useState, useEffect } from "react";
+import { csv } from "d3";
 
-const useFetch = url => {
-  const [students, setStudents] = useState(" ");
+const UseFetch = () => {
+  const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
-      .then(res => {
-        if (!res.ok) {
-          throw Error("Could not receive data");
-        }
-        return res.text();
-      })
+    csv("./test.csv")
+      //   .then(res => {
+      //     if (!res.ok) {
+      //       throw Error("Could not receive data");
+      //     }
+      //     return res.text;
+      //   })
       .then(data => {
-        setStudents(data);
-        console.log(students);
-        setIsPending(false);
-      })
-      .catch(err => {
-        setError(err.message);
+        setData(data);
+        // setIsPending(false);
+        //   })
+        //   .catch(err => {
+        //     setError(err.message);
       });
   }, []);
-  return { students, isPending, error };
+
+  console.log(data);
+
+  return (
+    <div>
+      {error && <div>{error}</div>}
+      {isPending && <div>Fetching data....</div>}
+      {data && <div>Welkom!</div>}
+    </div>
+  );
 };
 
-export default useFetch;
+export default UseFetch;

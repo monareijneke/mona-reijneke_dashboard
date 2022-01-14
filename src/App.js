@@ -1,15 +1,19 @@
 import "./App.css";
-import useFetch from "./useFetch";
+import UseFetch from "./UseFetch";
 
 function App() {
-  const { students, isPending, error } = useFetch("test.csv");
+  // const { data, isPending, error } =
+  //   UseFetch();
+  // "./test.csv"
+  //   "https://docs.google.com/spreadsheets/d/1BHjq5MjpuSItvVbnQcEdQt_v956-Ks1lr3f_nEFkTks/edit?usp=sharing"
 
   return (
     <div className="App-header">
       <div>
-        {Error && <div>{error}</div>}
+        <h2>is dit te zien?</h2>
+        {/* {Error && <div>{error}</div>}
         {isPending && <div>Fetching data....</div>}
-        {students && <div>Welkom!!</div>}
+        {data && <div>Welkom!</div>} */}
       </div>
     </div>
   );
